@@ -1,4 +1,4 @@
-import Card from "@/components/Card";
+import UseCaseCard from "@/components/UseCaseCard";
 import LandingPageText from "@/components/LandingPageText";
 import Image from "next/image";
 
@@ -27,7 +27,7 @@ export default function Home() {
 
       <section className="px-8 md:px-16 lg:px-32 flex items-center gap-x-5 w-full py-12">
         {cards.map((card) => (
-          <Card
+          <UseCaseCard
             title={card.title}
             text={card.text}
             linkOneText={card.linkOneText}
