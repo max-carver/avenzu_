@@ -30,7 +30,7 @@ const navLinks = [
 const Navbar = () => {
   const pathname = usePathname();
   return (
-    <header className="bg-zinc-50 border-b px-8 md:px-16 lg:px-32 text-sm sticky top-0">
+    <header className="bg-zinc-50 border-b px-8 md:px-16 lg:px-32 text-sm sticky top-0 z-50">
       <nav className="flex items-center justify-between h-16">
         <h1 className="text-xl">AVENZU</h1>
         <ul className="flex items-center">

@@ -1,9 +1,14 @@
 import UseCaseCard from "@/components/UseCaseCard";
 import LandingPageText from "@/components/LandingPageText";
 import Image from "next/image";
+import { MdAirplanemodeActive } from "react-icons/md";
+import { FaPlus } from "react-icons/fa";
+import { IoBriefcase } from "react-icons/io5";
+import ServiceCard from "@/components/ServiceCard";
+import FAQAccordion from "@/components/FAQAccordion";
 
 export default function Home() {
-  const cards = [
+  const useCaseCards = [
     {
       title: "Operator wanting to hire",
       text: "Get access to our specialized candidate database. Find the perfect crew for your company.",
@@ -19,6 +24,29 @@ export default function Home() {
       linkTwoHref: "/flight-attendants",
     },
   ];
+
+  const serviceCards = [
+    {
+      title: "Flight attendants",
+      text: "Our mentorship programme ensures that our candidates are at the prestigious level we stand by, followed by our recruiting and placements which focus on matching our exceptional crew with the perfect aviation operator.",
+      icon: <MdAirplanemodeActive size={36} className="text-red-500" />,
+    },
+    {
+      title: "Pilots",
+      text: "We understand the difficulties that pilots face when it comes to finding the right placement. Therefore it is our key objective to match you with the perfect full-time, part-time or temporary assignment.",
+      icon: <MdAirplanemodeActive size={36} className="text-red-500" />,
+    },
+    {
+      title: "Operators seeking air crew",
+      text: "We are proud of our mentorship programme and the candidates we endorse Operators now have the opportunity to easily browse through our available recruits and make direct contact with us.",
+      icon: <IoBriefcase size={36} className="text-red-500" />,
+    },
+    {
+      title: "Additional services",
+      text: "For our recruits, we can assists with transport arrangement, hotel bookings and visas. For our operators, we can handle VIP jet cabin outfitting and support, with all your personal requirements in mind.",
+      icon: <FaPlus size={36} className="text-red-500" />,
+    },
+  ];
   return (
     <main>
       <section className="bg-[url('../../public/black_gulf.webp')] bg-no-repeat bg-cover bg-center bg-fixed blackGulf-height shadow-blackGulf px-8 md:px-16 lg:px-32 flex items-center justify-center">
@@ -26,7 +54,7 @@ export default function Home() {
       </section>
 
       <section className="px-8 md:px-16 lg:px-32 flex items-center gap-x-5 w-full py-12">
-        {cards.map((card) => (
+        {useCaseCards.map((card) => (
           <UseCaseCard
             title={card.title}
             text={card.text}
@@ -73,6 +101,16 @@ export default function Home() {
             className="rounded-xl"
           />
         </div>
+      </section>
+
+      <section className="px-8 md:px-16 lg:px-32 py-12 grid grid-cols-2 gap-8">
+        {serviceCards.map((card) => (
+          <ServiceCard title={card.title} text={card.text} icon={card.icon} />
+        ))}
+      </section>
+
+      <section className="px-8 md:px-16 lg:px-32 py-12 ">
+        <FAQAccordion />
       </section>
     </main>
   );
