@@ -1,8 +1,8 @@
 "use client";
 
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
 
 const navLinks = [
   {
@@ -35,14 +35,14 @@ const Navbar = () => {
         <h1 className="text-xl">AVENZU</h1>
         <ul className="flex items-center">
           {navLinks.map((link) => (
-            <li
+            <motion.li
               key={link.title}
               className={`${
                 pathname === link.href ? "text-red-500" : "text-zinc-700"
-              } px-3`}
+              } py-1 px-3 border-b border-transparent hover:border-red-500 transition duration-300 cursor-pointer`}
             >
               <Link href={link.href}>{link.title}</Link>
-            </li>
+            </motion.li>
           ))}
         </ul>
       </nav>
