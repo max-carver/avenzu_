@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -36,7 +37,9 @@ const Navbar = () => {
     <header className="bg-zinc-50 text-zinc-800 border-b px-8 md:px-16 lg:px-32 text-sm sticky top-0 z-50">
       {/* Desktop Navigation */}
       <nav className="hidden md:flex items-center justify-between h-16">
-        <h1 className="text-xl">AVENZU</h1>
+        <Link href={"/"}>
+          <Image src={"/logo.png"} alt="Avenzu Logo" width={200} height={100} />
+        </Link>
         <ul className="flex items-center">
           {navLinks.map((link) => (
             <motion.li
@@ -53,7 +56,9 @@ const Navbar = () => {
 
       {/* Mobile Navigation */}
       <nav className="flex md:hidden items-center justify-between h-16">
-        <h1 className="text-xl">AVENZU</h1>
+        <Link href={"/"}>
+          <Image src={"/logo.png"} alt="Avenzu Logo" width={125} height={100} />
+        </Link>
         {!navOpen ? (
           <RiMenu3Line
             size={36}

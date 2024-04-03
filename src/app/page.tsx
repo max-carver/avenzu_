@@ -47,6 +47,7 @@ export default function Home() {
       icon: <FaPlus size={36} className="text-red-500" />,
     },
   ];
+
   return (
     <main>
       <section className="bg-[url('../../public/black_gulf.webp')] bg-no-repeat bg-cover bg-center bg-fixed blackGulf-height shadow-blackGulf px-8 md:px-16 lg:px-32 flex items-center justify-center">
@@ -56,6 +57,7 @@ export default function Home() {
       <section className="px-8 md:px-16 lg:px-32 flex items-center gap-x-5 w-full py-12">
         {useCaseCards.map((card) => (
           <UseCaseCard
+            key={card.title}
             title={card.title}
             text={card.text}
             linkOneText={card.linkOneText}
@@ -105,7 +107,12 @@ export default function Home() {
 
       <section className="px-8 md:px-16 lg:px-32 py-12 grid grid-cols-2 gap-8">
         {serviceCards.map((card) => (
-          <ServiceCard title={card.title} text={card.text} icon={card.icon} />
+          <ServiceCard
+            key={card.title}
+            title={card.title}
+            text={card.text}
+            icon={card.icon}
+          />
         ))}
       </section>
 
