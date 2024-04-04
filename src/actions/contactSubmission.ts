@@ -19,5 +19,7 @@ export const contactSubmit = async (values: z.infer<typeof ContactSchema>) => {
   const newSubmission = new ContactSubmissionModel(validatedFields.data);
   await newSubmission.save();
   console.log(validatedFields);
-  return { success: "Success" };
+  return {
+    success: "Thank you for your submission! We'll be in touch shortly",
+  };
 };
