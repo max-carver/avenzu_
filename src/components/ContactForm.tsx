@@ -16,8 +16,14 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { FormError } from "./ui/FormError";
 import { FormSuccess } from "./ui/FormSuccess";
+import { contactSubmit } from "@/actions/contactSubmission";
+import { useState, useTransition } from "react";
 
 const ContactForm = () => {
+  const [isPending, startTransition] = useTransition();
+  const [error, setError] = useState<string | undefined>("");
+  const [success, setSuccess] = useState<string | undefined>("");
+
   const form = useForm<z.infer<typeof ContactSchema>>({
     resolver: zodResolver(ContactSchema),
     defaultValues: {
@@ -29,13 +35,20 @@ const ContactForm = () => {
   });
 
   const onSubmit = (values: z.infer<typeof ContactSchema>) => {
-    console.log(values);
+    setError("");
+    setSuccess("");
+    startTransition(() => {
+      contactSubmit(values).then((data) => {
+        setError(data.error);
+        setSuccess(data.success);
+      });
+    });
   };
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="p-5 rounded-lg shadow-lg border border-zinc-300 w-5/12"
+        className="p-5 rounded-lg shadow-lg border border-zinc-300 w-5/12 space-y-5"
       >
         <h2 className="text-center font-medium text-2xl mb-5">Contact</h2>
         <div className="space-y-3">
@@ -46,7 +59,12 @@ const ContactForm = () => {
               <FormItem>
                 <FormLabel>First name</FormLabel>
                 <FormControl>
-                  <Input {...field} placeholder="John" type="text" />
+                  <Input
+                    {...field}
+                    placeholder="John"
+                    type="text"
+                    disabled={isPending}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -59,7 +77,12 @@ const ContactForm = () => {
               <FormItem>
                 <FormLabel>Last name</FormLabel>
                 <FormControl>
-                  <Input {...field} placeholder="Doe" type="text" />
+                  <Input
+                    {...field}
+                    placeholder="Doe"
+                    type="text"
+                    disabled={isPending}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -76,6 +99,7 @@ const ContactForm = () => {
                     {...field}
                     placeholder="example@gmail.com"
                     type="email"
+                    disabled={isPending}
                   />
                 </FormControl>
                 <FormMessage />
@@ -89,21 +113,34 @@ const ContactForm = () => {
               <FormItem>
                 <FormLabel>Message</FormLabel>
                 <FormControl>
-                  <Textarea {...field} placeholder="Message..." />
+                  <Textarea
+                    {...field}
+                    placeholder="Message..."
+                    disabled={isPending}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
         </div>
-        <FormError />
-        <FormSuccess />
-        <button
-          type="submit"
-          className="mt-5 w-full text-center bg-red-500 hover:bg-red-500/60 transition duration-200 py-2 rounded-lg text-zinc-50"
-        >
-          Submit
-        </button>
+        <FormError message={error} />
+        <FormSuccess message={success} />
+        {isPending ? (
+          <button
+            type="submit"
+            className="mt-5 w-full text-center bg-red-500 hover:bg-red-500/60 transition duration-200 py-2 rounded-lg text-zinc-50"
+          >
+            Loading...
+          </button>
+        ) : (
+          <button
+            type="submit"
+            className="mt-5 w-full text-center bg-red-500 hover:bg-red-500/60 transition duration-200 py-2 rounded-lg text-zinc-50"
+          >
+            Submit
+          </button>
+        )}
       </form>
     </Form>
   );
