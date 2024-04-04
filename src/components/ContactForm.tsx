@@ -51,13 +51,13 @@ const ContactForm = () => {
         onSubmit={form.handleSubmit(onSubmit)}
         className="p-5 rounded-lg shadow-lg border border-zinc-300 w-5/12 space-y-5"
       >
-        <h2
+        <h3
           className={clsx("text-center font-medium text-2xl mb-5", {
             hidden: success,
           })}
         >
           Contact
-        </h2>
+        </h3>
         {!success && (
           <div className="space-y-3">
             <FormField
@@ -133,79 +133,7 @@ const ContactForm = () => {
             />
           </div>
         )}
-        {/* <div className="space-y-3">
-          <FormField
-            control={form.control}
-            name="firstName"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>First name</FormLabel>
-                <FormControl>
-                  <Input
-                    {...field}
-                    placeholder="John"
-                    type="text"
-                    disabled={isPending}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="lastName"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Last name</FormLabel>
-                <FormControl>
-                  <Input
-                    {...field}
-                    placeholder="Doe"
-                    type="text"
-                    disabled={isPending}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="emailAddress"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Email address</FormLabel>
-                <FormControl>
-                  <Input
-                    {...field}
-                    placeholder="example@gmail.com"
-                    type="email"
-                    disabled={isPending}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="message"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Message</FormLabel>
-                <FormControl>
-                  <Textarea
-                    {...field}
-                    placeholder="Message..."
-                    disabled={isPending}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div> */}
+
         <FormError message={error} />
         <FormSuccess message={success} />
 

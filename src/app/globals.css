@@ -78,3 +78,7 @@
 .blackGulf-height {
   height: calc(100vh - 65px);
 }
+
+.blackGulf {
+  box-shadow: 4000px 4000px inset #000;
+}
