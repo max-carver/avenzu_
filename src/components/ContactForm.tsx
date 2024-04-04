@@ -14,8 +14,8 @@ import * as z from "zod";
 import { ContactSchema } from "@/schemas";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { FormError } from "./ui/FormError";
-import { FormSuccess } from "./ui/FormSuccess";
+import { FormError } from "./FormError";
+import { FormSuccess } from "./FormSuccess";
 import { contactSubmit } from "@/actions/contactSubmission";
 import { useState, useTransition } from "react";
 
