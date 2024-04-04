@@ -14,6 +14,8 @@ import * as z from "zod";
 import { ContactSchema } from "@/schemas";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { FormError } from "./ui/FormError";
+import { FormSuccess } from "./ui/FormSuccess";
 
 const ContactForm = () => {
   const form = useForm<z.infer<typeof ContactSchema>>({
@@ -25,10 +27,14 @@ const ContactForm = () => {
       message: "",
     },
   });
+
+  const onSubmit = (values: z.infer<typeof ContactSchema>) => {
+    console.log(values);
+  };
   return (
     <Form {...form}>
       <form
-        onSubmit={form.handleSubmit(() => {})}
+        onSubmit={form.handleSubmit(onSubmit)}
         className="p-5 rounded-lg shadow-lg border border-zinc-300 w-5/12"
       >
         <h2 className="text-center font-medium text-2xl mb-5">Contact</h2>
@@ -83,13 +89,15 @@ const ContactForm = () => {
               <FormItem>
                 <FormLabel>Message</FormLabel>
                 <FormControl>
-                  <Textarea placeholder="Message..." />
+                  <Textarea {...field} placeholder="Message..." />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
         </div>
+        <FormError />
+        <FormSuccess />
         <button
           type="submit"
           className="mt-5 w-full text-center bg-red-500 hover:bg-red-500/60 transition duration-200 py-2 rounded-lg text-zinc-50"
