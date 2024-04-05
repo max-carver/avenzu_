@@ -33,7 +33,7 @@ const FAQAccordion = () => {
         </AccordionItem>
         <AccordionItem value="item-3">
           <AccordionTrigger>
-            What makes Avenzu different from other recruitment agencies??
+            What makes Avenzu different from other recruitment agencies?
           </AccordionTrigger>
           <AccordionContent className="text-sm mb-5">
             We prioritize personalized service, professionalism, and attention

@@ -74,7 +74,14 @@ const Navbar = () => {
         )}
 
         {navOpen && (
-          <ul className="absolute top-16 left-0 flex flex-col items-start bg-zinc-50 text-lg w-full h-screen pl-5">
+          <motion.ul
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{
+              duration: 0.1,
+            }}
+            className="absolute top-16 left-0 flex flex-col items-start bg-zinc-50 text-lg w-full h-screen pl-5"
+          >
             {navLinks.map((link) => (
               <motion.li
                 key={link.title}
@@ -87,7 +94,7 @@ const Navbar = () => {
                 </Link>
               </motion.li>
             ))}
-          </ul>
+          </motion.ul>
         )}
       </nav>
     </header>

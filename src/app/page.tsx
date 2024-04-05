@@ -6,7 +6,6 @@ import { FaPlus } from "react-icons/fa";
 import { IoBriefcase } from "react-icons/io5";
 import ServiceCard from "@/components/ServiceCard";
 import FAQAccordion from "@/components/FAQAccordion";
-import { PilotForm } from "@/components/PilotForm";
 
 export default function Home() {
   const useCaseCards = [
@@ -55,7 +54,7 @@ export default function Home() {
         <LandingPageText />
       </section>
 
-      <section className="px-8 md:px-16 lg:px-32 flex items-center gap-x-5 w-full py-12">
+      <section className="px-8 md:px-16 lg:px-32 md:flex-row flex-col flex items-center gap-5 w-full py-12">
         {useCaseCards.map((card) => (
           <UseCaseCard
             key={card.title}
@@ -68,13 +67,14 @@ export default function Home() {
           />
         ))}
       </section>
+
       <section className="px-8 md:px-16 lg:px-32 py-12 w-full">
         <h3 className="text-2xl font-medium">
           Tailored solutions for your aviation needs
         </h3>
         <h4 className="text-xl text-zinc-600">Your success, our committment</h4>
-        <div className="flex items-stretch gap-x-6 justify-between mt-8">
-          <div className="flex flex-col gap-y-4 w-1/2">
+        <div className="md:flex-row flex-col flex md:items-center gap-6 justify-between mt-8">
+          <div className="flex flex-col gap-y-4 w-full md:w-1/2">
             <p className="text-zinc-700 text-sm">
               We are Avenzu, a personalized recruitment and mentorship service
               provider. Our key focus is to ensure that our staff are a perfect
@@ -95,17 +95,20 @@ export default function Home() {
               vetted staffing database.
             </p>
           </div>
-          <Image
-            src="/gulfstream-interior.jpg"
-            alt="Gulfstream interior"
-            width={450}
-            height={700}
-            className="rounded-xl"
-          />
+          <div className="w-full md:w-1/2 h-[350px] relative">
+            <Image
+              src="/gulfstream-interior.jpg"
+              alt="Gulfstream interior"
+              fill={true}
+              objectFit="cover"
+              objectPosition="center"
+              className="rounded-2xl"
+            />
+          </div>
         </div>
       </section>
 
-      <section className="px-8 md:px-16 lg:px-32 py-12 grid grid-cols-2 gap-8">
+      <section className="px-8 md:px-16 lg:px-32 py-12 flex flex-col md:grid grid-cols-2 gap-8">
         {serviceCards.map((card) => (
           <ServiceCard
             key={card.title}

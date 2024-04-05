@@ -65,7 +65,7 @@ export const PilotForm = () => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="p-5 rounded-lg shadow-lg border border-zinc-300 w-1/2 space-y-5 bg-zinc-50"
+        className="p-5 rounded-lg shadow-2xl border border-zinc-300 w-full md:w-2/3 space-y-5 bg-zinc-50"
       >
         <h3
           className={clsx("text-center font-medium text-2xl mb-5", {

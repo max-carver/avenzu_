@@ -28,7 +28,7 @@ const UseCaseCard = ({
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
       viewport={{ once: true }}
-      className="flex flex-col items-start justify-center gap-y-2 border border-red-500 p-5 rounded-xl w-1/2 min-h-32"
+      className="flex flex-col items-start justify-center gap-y-2 border border-red-500 p-5 rounded-xl w-full md:w-1/2 md:min-h-56"
     >
       <h2 className="text-2xl font-medium">{title}</h2>
       <p className="text-zinc-700">{text}</p>

@@ -18,9 +18,9 @@ const PilotsPage = () => {
             delay: 0.3,
             stiffness: 100,
           }}
-          className="flex items-center justify-between gap-x-12 w-full"
+          className="flex items-center md:flex-row flex-col justify-between gap-12 w-full"
         >
-          <div className="flex flex-col gap-y-4 w-1/2">
+          <div className="flex flex-col gap-4 w-full md:w-1/2">
             <h2 className="text-2xl font-medium">
               Your path to the perfect assignment
             </h2>
@@ -33,22 +33,25 @@ const PilotsPage = () => {
               your aviation journey with us.
             </p>
           </div>
-          <Image
-            src={"/pilot.jpg"}
-            width={500}
-            height={800}
-            alt="Pilot"
-            className="rounded-xl shadow-xl"
-          />
+          <div className="w-full md:w-1/2 h-[350px] relative">
+            <Image
+              src={"/pilot.jpg"}
+              fill={true}
+              objectFit="cover"
+              objectPosition="center"
+              className="rounded-2xl shadow-xl"
+              alt="Pilot"
+            />
+          </div>
         </motion.div>
       </section>
 
-      <section className="min-h-screen flex flex-col items-center justify-start py-12 px-8 md:px-16 lg:px-32 relative h-[24rem]">
+      <section className="min-h-screen flex flex-col items-center justify-start py-12 px-8 md:px-16 lg:px-32 relative h-[48rem]">
         <h2 className="text-3xl font-medium mb-6 text-center">Apply now</h2>
         <PilotForm />
       </section>
 
-      <section className="bg-black min-w-screen h-screen bg-[url('../../public/gulfstream-sun.jpg')] bg-no-repeat bg-cover bg-fixed bg-center shadow-blackGulf"></section>
+      <section className="bg-black min-w-screen h-[800px] bg-[url('../../public/gulfstream-sun.jpg')] bg-no-repeat bg-cover bg-fixed bg-center shadow-blackGulf"></section>
     </main>
   );
 };

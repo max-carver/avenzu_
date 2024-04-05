@@ -49,7 +49,7 @@ const ContactForm = () => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="p-5 rounded-lg shadow-lg border border-zinc-300 w-5/12 space-y-5"
+        className="p-5 rounded-lg shadow-lg border border-zinc-300 w-full md:w-3/4 lg:w-5/12 space-y-5"
       >
         <h3
           className={clsx("text-center font-medium text-2xl mb-5", {
