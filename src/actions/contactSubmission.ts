@@ -1,6 +1,6 @@
 "use server";
 import { connectToDB } from "@/lib/db";
-import { ContactSubmissionModel } from "@/models/contactSubmission";
+import { ContactSubmissionModel } from "@/models/contactSubmissionModel";
 import { ContactSchema } from "@/schemas";
 import * as z from "zod";
 
