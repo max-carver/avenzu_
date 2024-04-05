@@ -6,6 +6,7 @@ import { FaPlus } from "react-icons/fa";
 import { IoBriefcase } from "react-icons/io5";
 import ServiceCard from "@/components/ServiceCard";
 import FAQAccordion from "@/components/FAQAccordion";
+import { PilotForm } from "@/components/PilotForm";
 
 export default function Home() {
   const useCaseCards = [
@@ -67,7 +68,6 @@ export default function Home() {
           />
         ))}
       </section>
-
       <section className="px-8 md:px-16 lg:px-32 py-12 w-full">
         <h3 className="text-2xl font-medium">
           Tailored solutions for your aviation needs
