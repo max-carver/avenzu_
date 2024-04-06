@@ -44,7 +44,7 @@ export const pilotSubmit = async (values: z.infer<typeof PilotSchema>) => {
   ) {
     return { error: "Required fields are missing" };
   }
-  const newSubmission = new PilotSubmissionModel(validatedFields.data);
+  const newSubmission = await new PilotSubmissionModel(validatedFields.data);
   await newSubmission.save();
   console.log(validatedFields);
   return {

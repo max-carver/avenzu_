@@ -406,6 +406,7 @@ export const PilotForm = () => {
           <button
             type="submit"
             className="mt-5 w-full text-center bg-red-500 hover:bg-red-500/60 transition duration-200 py-2 rounded-lg text-zinc-50"
+            disabled={isPending}
           >
             Loading...
           </button>

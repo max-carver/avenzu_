@@ -49,14 +49,6 @@ const pilotsubmissionSchema = new mongoose.Schema({
     type: Array,
     required: true,
   },
-  cvUrl: {
-    type: String,
-    required: true,
-  },
-  photoUrl: {
-    type: String,
-    required: true,
-  },
 });
 
 export const PilotSubmissionModel =
