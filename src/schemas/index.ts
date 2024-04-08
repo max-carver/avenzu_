@@ -1,13 +1,18 @@
 import * as z from "zod";
 
-const MAX_UPLOAD_SIZE = 1024 * 1024 * 3;
-const ACCEPTED_FILE_TYPES = ["image/png", "image/jpg", "file/pdf"];
+// const MAX_FILE_SIZE = 5000000;
+// const ACCEPTED_FILE_TYPES = ["file/pdf"];
 
 export const ContactSchema = z.object({
   firstName: z.string().min(1, { message: "First name is required" }),
   lastName: z.string().min(1, { message: "Last name is required" }),
   emailAddress: z.string().email({ message: "Email is required" }),
   message: z.string().min(1, { message: "Message is required" }),
+  photoUpload: z
+    .instanceof(FileList)
+    .refine((file) => file?.length == 1, "File is required."),
+  // .refine((file) => file?.length == 1, "File is required.")
+  // .refine((file) => file[0]?.size <= 3000000, `Max file size is 3MB.`),
 });
 
 export const PilotSchema = z.object({

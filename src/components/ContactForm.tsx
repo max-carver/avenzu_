@@ -32,18 +32,23 @@ const ContactForm = () => {
       lastName: "",
       emailAddress: "",
       message: "",
+      photoUpload: undefined,
     },
   });
-
+  const photoRef = form.register("photoUpload");
   const onSubmit = (values: z.infer<typeof ContactSchema>) => {
-    setError("");
-    setSuccess("");
-    startTransition(() => {
-      contactSubmit(values).then((data) => {
-        setError(data.error);
-        setSuccess(data.success);
-      });
-    });
+    // setError("");
+    // setSuccess("");
+    // startTransition(() => {
+    console.log(values.photoUpload);
+    // .then((data) => console.log("success", data))
+    // .catch((err) => console.log(err));
+    // .then((data) => {
+    //   setError(data.error);
+    //   setSuccess(data.success);
+    // });
+    // });
+    // console.log(values);
   };
   return (
     <Form {...form}>
@@ -70,6 +75,8 @@ const ContactForm = () => {
                     <Input
                       {...field}
                       placeholder="John"
+                      autoComplete="on"
+                      autoCapitalize="on"
                       type="text"
                       disabled={isPending}
                     />
@@ -88,6 +95,8 @@ const ContactForm = () => {
                     <Input
                       {...field}
                       placeholder="Doe"
+                      autoComplete="on"
+                      autoCapitalize="on"
                       type="text"
                       disabled={isPending}
                     />
@@ -106,6 +115,7 @@ const ContactForm = () => {
                     <Input
                       {...field}
                       placeholder="example@gmail.com"
+                      autoComplete="on"
                       type="email"
                       disabled={isPending}
                     />
@@ -124,7 +134,27 @@ const ContactForm = () => {
                     <Textarea
                       {...field}
                       placeholder="Message..."
+                      autoCapitalize="on"
                       disabled={isPending}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="photoUpload"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Photo upload</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="file"
+                      {...photoRef}
+                      onChange={(event) => {
+                        field.onChange(event.target?.files?.[0] ?? undefined);
+                      }}
                     />
                   </FormControl>
                   <FormMessage />

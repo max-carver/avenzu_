@@ -17,6 +17,10 @@ const contactSubmissionSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  photoUpload: {
+    type: String,
+    required: true,
+  },
 });
 
 export const ContactSubmissionModel =
