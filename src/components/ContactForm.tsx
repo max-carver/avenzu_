@@ -36,19 +36,16 @@ const ContactForm = () => {
     },
   });
   const photoRef = form.register("photoUpload");
-  const onSubmit = (values: z.infer<typeof ContactSchema>) => {
-    // setError("");
-    // setSuccess("");
-    // startTransition(() => {
-    console.log(values.photoUpload);
-    // .then((data) => console.log("success", data))
-    // .catch((err) => console.log(err));
-    // .then((data) => {
-    //   setError(data.error);
-    //   setSuccess(data.success);
-    // });
-    // });
-    // console.log(values);
+  const formSchema = z.object({
+    firstName: z.string().min(1, { message: "First name is required" }),
+    lastName: z.string().min(1, { message: "Last name is required" }),
+    emailAddress: z.string().email({ message: "Email is required" }),
+    message: z.string().min(1, { message: "Message is required" }),
+    photoUpload: z.instanceof(File).optional(),
+  });
+  const onSubmit = (values: z.infer<typeof formSchema>) => {
+    console.log(values); // This works
+    contactSubmit(values); // This doesnt
   };
   return (
     <Form {...form}>
