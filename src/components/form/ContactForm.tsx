@@ -27,7 +27,7 @@ const ContactForm = () => {
           setSuccess(success);
         }
       }}
-      className="flex flex-col space-y-4 bg-zinc-50 p-5 w-full  lg:w-1/2 rounded-xl shadow-xl"
+      className="flex flex-col space-y-4 bg-zinc-100 p-5 w-full  lg:w-1/2 rounded-xl shadow-xl border"
     >
       {!success && (
         <>
@@ -66,10 +66,10 @@ const ContactForm = () => {
               className="border rounded-md p-2 outline-red-500/80"
             />
           </div>
-          <label htmlFor="message" className="text-xs font-medium">
-            Message
-          </label>
           <div className="flex flex-col">
+            <label htmlFor="message" className="text-xs font-medium">
+              Message
+            </label>
             <TextArea
               name="message"
               placeholder="Message..."

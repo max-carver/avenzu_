@@ -13,6 +13,10 @@ const pilotsubmissionSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  phoneNumber: {
+    type: String,
+    required: true,
+  },
   age: {
     type: Number,
     required: true,
@@ -49,6 +53,14 @@ const pilotsubmissionSchema = new mongoose.Schema({
     type: Array,
     required: true,
   },
+  photoUrl: {
+    type: String,
+    required: true,
+  },
+  // cvUpload: {
+  //   type: Buffer,
+  //   required: true,
+  // },
 });
 
 export const PilotSubmissionModel =

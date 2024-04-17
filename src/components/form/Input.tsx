@@ -1,15 +1,22 @@
 "use client";
 
-import React from "react";
+import React, { ChangeEvent, useState } from "react";
 import { useFormStatus } from "react-dom";
-
+import Select from "react-select";
 type InputProps = {
   type: string;
   name: string;
-  placeholder: string;
+  placeholder?: string;
   className: string;
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 };
-export const Input = ({ type, name, placeholder, className }: InputProps) => {
+export const Input = ({
+  type,
+  name,
+  placeholder,
+  className,
+  onChange,
+}: InputProps) => {
   const status = useFormStatus();
 
   return (
@@ -17,9 +24,10 @@ export const Input = ({ type, name, placeholder, className }: InputProps) => {
       type={type}
       name={name}
       placeholder={placeholder}
-      className={className}
+      className={`border-zinc-400 hover:border-zinc-500 transition duration-200 ${className}`}
       disabled={status.pending}
       required
+      onChange={onChange}
     />
   );
 };
@@ -36,9 +44,35 @@ export const TextArea = ({ name, placeholder, className }: TextAreaProps) => {
     <textarea
       name={name}
       placeholder={placeholder}
-      className={className}
+      className={`border-zinc-400 hover:border-zinc-500 transition duration-200 ${className}`}
       disabled={status.pending}
       required
     ></textarea>
   );
+};
+
+type SelectMenuProps = {
+  name: string;
+};
+
+export const GenderSelectMenu = ({ name }: SelectMenuProps) => {
+  const options = [
+    { value: "female", label: "Female" },
+    { value: "male", label: "Male" },
+  ];
+  return (
+    <Select
+      name={name}
+      options={options}
+      className="border-zinc-400 cursor-pointer"
+    />
+  );
+};
+
+type CheckboxProps = {
+  value: string;
+};
+
+export const Checkbox = ({ value }: CheckboxProps) => {
+  return <input type="checkbox" value={value} />;
 };
