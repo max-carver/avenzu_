@@ -65,7 +65,6 @@ export const pilotSubmit = async (formData: FormData) => {
           }
           photoUrl = result?.secure_url;
           resolve(result);
-          console.log(photoUrl);
         })
         .end(photoBuffer);
     });

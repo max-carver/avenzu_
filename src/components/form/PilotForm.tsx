@@ -6,8 +6,8 @@ import clsx from "clsx";
 import { ChangeEvent, useRef, useState } from "react";
 import { GenderSelectMenu, Input } from "@/components/form/Input";
 import SubmitButton from "./SubmitButton";
-import { pilotSubmit } from "@/actions/pilotSubmission.ts";
 import { UploadIcon } from "@radix-ui/react-icons";
+import { pilotSubmit } from "@/actions/pilotSubmission";
 
 const PilotForm = () => {
   const ref = useRef<HTMLFormElement>(null);
@@ -370,7 +370,7 @@ const PilotForm = () => {
           </div>
 
           <div className="flex flex-col md:flex-row items-center justify-between gap-2">
-            <div className="flex flex-col items-center justify-center outline-1 outline-dashed outline-zinc-400 relative p-2 rounded-md w-full">
+            <div className="flex flex-col items-center justify-center outline-1 outline-dashed outline-zinc-400 relative p-2 rounded-md w-full cursor-pointer">
               <label htmlFor="photoUpload" className="text-xs font-medium">
                 Photo upload
               </label>
@@ -388,7 +388,7 @@ const PilotForm = () => {
               <p>{selectedPhotoName && "Replace"}</p>
             </div>
 
-            <div className="flex flex-col items-center justify-center outline-1 outline-dashed outline-zinc-400 relative p-2 rounded-md w-full">
+            <div className="flex flex-col items-center justify-center outline-1 outline-dashed outline-zinc-400 relative p-2 rounded-md w-full cursor-pointer">
               <label htmlFor="cvUpload" className="text-xs font-medium">
                 CV upload
               </label>
