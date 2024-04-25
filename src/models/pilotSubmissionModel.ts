@@ -46,6 +46,38 @@ const pilotsubmissionSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    pic: {
+      type: Number,
+      required: true,
+    },
+    secondInCommand: {
+      type: Number,
+      required: true,
+    },
+    singleEngineLand: {
+      type: Number,
+      required: true,
+    },
+    multiEngineLand: {
+      type: Number,
+      required: true,
+    },
+    jetTime: {
+      type: Number,
+      required: true,
+    },
+    turbineTime: {
+      type: Number,
+      required: true,
+    },
+    helicopterTime: {
+      type: Number,
+      required: true,
+    },
+    instructorTime: {
+      type: Number,
+      required: true,
+    },
     jobTypes: {
       type: Array,
       required: true,
