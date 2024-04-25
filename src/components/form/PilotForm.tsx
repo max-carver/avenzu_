@@ -8,13 +8,15 @@ import { GenderSelectMenu, Input } from "@/components/form/Input";
 import SubmitButton from "./SubmitButton";
 import { UploadIcon } from "@radix-ui/react-icons";
 import { pilotSubmit } from "@/actions/pilotSubmission";
-
+import { useFormStatus } from "react-dom";
+import { redirect } from "next/navigation";
 const PilotForm = () => {
   const ref = useRef<HTMLFormElement>(null);
   const [error, setError] = useState<string>("");
   const [success, setSuccess] = useState<string>("");
   const [selectedPhotoName, setSelectedPhotoName] = useState<string | null>("");
   const [selectedCVName, setSelectedCVName] = useState<string | null>("");
+  const status = useFormStatus();
 
   const handlePhotoChange = (event: ChangeEvent<HTMLInputElement>) => {
     const photoFile = event.target.files?.[0];
@@ -34,13 +36,14 @@ const PilotForm = () => {
       action={async (formData) => {
         setError("");
         setSuccess("");
-        ref.current?.reset();
         const { error, success } = await pilotSubmit(formData);
         if (error) {
           setError(error);
         }
         if (success) {
           setSuccess(success);
+          ref.current?.reset();
+          redirect("/pilots/success/#success");
         }
       }}
       className="flex flex-col space-y-5 bg-zinc-100 p-5 w-full lg:w-2/3 rounded-xl shadow-xl border"
@@ -147,6 +150,7 @@ const PilotForm = () => {
                   name="licenses"
                   value="ICAO"
                   className="cursor-pointer w-4 h-4"
+                  disabled={status.pending}
                 />
                 <label htmlFor="ICAO" className="text-sm">
                   ICAO
@@ -158,6 +162,7 @@ const PilotForm = () => {
                   name="licenses"
                   value="FAA"
                   className="cursor-pointer w-4 h-4"
+                  disabled={status.pending}
                 />
                 <label htmlFor="FAA" className="text-sm">
                   FAA
@@ -169,6 +174,7 @@ const PilotForm = () => {
                   name="licenses"
                   value="UKCAA"
                   className="cursor-pointer w-4 h-4"
+                  disabled={status.pending}
                 />
                 <label htmlFor="UKCAA" className="text-sm">
                   UKCAA
@@ -180,6 +186,7 @@ const PilotForm = () => {
                   name="licenses"
                   value="EASA"
                   className="cursor-pointer w-4 h-4"
+                  disabled={status.pending}
                 />
                 <label htmlFor="EASA" className="text-sm">
                   EASA
@@ -202,6 +209,7 @@ const PilotForm = () => {
                   name="aircrafts"
                   value="Censna"
                   className="cursor-pointer w-4 h-4"
+                  disabled={status.pending}
                 />
                 <label htmlFor="Censna" className="text-sm">
                   Censna
@@ -213,6 +221,7 @@ const PilotForm = () => {
                   name="aircrafts"
                   value="Beechcraft"
                   className="cursor-pointer w-4 h-4"
+                  disabled={status.pending}
                 />
                 <label htmlFor="Beechcraft" className="text-sm">
                   Beechcraft
@@ -224,6 +233,7 @@ const PilotForm = () => {
                   name="aircrafts"
                   value="ATR"
                   className="cursor-pointer w-4 h-4"
+                  disabled={status.pending}
                 />
                 <label htmlFor="ATR" className="text-sm">
                   ATR
@@ -235,6 +245,7 @@ const PilotForm = () => {
                   name="aircrafts"
                   value="Embrear"
                   className="cursor-pointer w-4 h-4"
+                  disabled={status.pending}
                 />
                 <label htmlFor="Embrear" className="text-sm">
                   Embrear
@@ -246,6 +257,7 @@ const PilotForm = () => {
                   name="aircrafts"
                   value="Legacy"
                   className="cursor-pointer w-4 h-4"
+                  disabled={status.pending}
                 />
                 <label htmlFor="Legacy" className="text-sm">
                   Legacy
@@ -257,6 +269,7 @@ const PilotForm = () => {
                   name="aircrafts"
                   value="Bombardier"
                   className="cursor-pointer w-4 h-4"
+                  disabled={status.pending}
                 />
                 <label htmlFor="Bombardier" className="text-sm">
                   Bombardier
@@ -268,6 +281,7 @@ const PilotForm = () => {
                   name="aircrafts"
                   value="BombardierChallenger"
                   className="cursor-pointer w-4 h-4"
+                  disabled={status.pending}
                 />
                 <label htmlFor="BombardierChallenger" className="text-sm">
                   Bombardier Challenger
@@ -279,6 +293,7 @@ const PilotForm = () => {
                   name="aircrafts"
                   value="Gulfstream"
                   className="cursor-pointer w-4 h-4"
+                  disabled={status.pending}
                 />
                 <label htmlFor="Gulfstream" className="text-sm">
                   Gulfstream
@@ -290,6 +305,7 @@ const PilotForm = () => {
                   name="aircrafts"
                   value="Dassault"
                   className="cursor-pointer w-4 h-4"
+                  disabled={status.pending}
                 />
                 <label htmlFor="Dassault" className="text-sm">
                   Dassault
@@ -301,6 +317,7 @@ const PilotForm = () => {
                   name="aircrafts"
                   value="DassaultFelcon"
                   className="cursor-pointer w-4 h-4"
+                  disabled={status.pending}
                 />
                 <label htmlFor="DassaultFelcon" className="text-sm">
                   Dassault Felcon
@@ -309,16 +326,129 @@ const PilotForm = () => {
             </div>
           </div>
 
-          <div className="flex flex-col">
-            <label htmlFor="totalTime" className="text-xs font-medium">
-              Total time (in hours)
-            </label>
-            <Input
-              type="text"
-              name="totalTime"
-              placeholder="160"
-              className="border rounded-md p-2 outline-red-500/80"
-            />
+          <div className="flex flex-col justify-center gap-2 w-full">
+            <div className="flex flex-col">
+              <p className="text-xs font-medium">Experience (hours)</p>
+              <sub className="text-xs italic text-zinc-400">
+                Enter any experience you have
+              </sub>
+            </div>
+            <div className="bg-zinc-50 p-2 rounded flex flex-col md:grid grid-cols-3 gap-2">
+              <div className="flex flex-col">
+                <label htmlFor="totalTime" className="text-xs font-medium">
+                  Total time
+                </label>
+                <Input
+                  type="text"
+                  name="totalTime"
+                  placeholder="Hours"
+                  className="border rounded-md p-2 outline-red-500/80"
+                />
+              </div>
+              <div className="flex flex-col">
+                <label htmlFor="pic" className="text-xs font-medium">
+                  PIC
+                </label>
+                <Input
+                  type="text"
+                  name="pic"
+                  placeholder="Hours"
+                  className="border rounded-md p-2 outline-red-500/80"
+                />
+              </div>
+              <div className="flex flex-col">
+                <label
+                  htmlFor="secondInCommand"
+                  className="text-xs font-medium"
+                >
+                  Second in command
+                </label>
+                <Input
+                  type="text"
+                  name="secondInCommand"
+                  placeholder="Hours"
+                  className="border rounded-md p-2 outline-red-500/80"
+                />
+              </div>
+
+              <div className="flex flex-col">
+                <label
+                  htmlFor="singleEngineLand"
+                  className="text-xs font-medium"
+                >
+                  Single engine land
+                </label>
+                <Input
+                  type="text"
+                  name="singleEngineLand"
+                  placeholder="Hours"
+                  className="border rounded-md p-2 outline-red-500/80"
+                />
+              </div>
+
+              <div className="flex flex-col">
+                <label
+                  htmlFor="multiEngineLand"
+                  className="text-xs font-medium"
+                >
+                  Multi engine land
+                </label>
+                <Input
+                  type="text"
+                  name="multiEngineLand"
+                  placeholder="Hours"
+                  className="border rounded-md p-2 outline-red-500/80"
+                />
+              </div>
+
+              <div className="flex flex-col">
+                <label htmlFor="jetTime" className="text-xs font-medium">
+                  Jet time
+                </label>
+                <Input
+                  type="text"
+                  name="jetTime"
+                  placeholder="Hours"
+                  className="border rounded-md p-2 outline-red-500/80"
+                />
+              </div>
+
+              <div className="flex flex-col">
+                <label htmlFor="turbineTime" className="text-xs font-medium">
+                  Turbine time
+                </label>
+                <Input
+                  type="text"
+                  name="turbineTime"
+                  placeholder="Hours"
+                  className="border rounded-md p-2 outline-red-500/80"
+                />
+              </div>
+
+              <div className="flex flex-col">
+                <label htmlFor="helicopterTime" className="text-xs font-medium">
+                  Helicopter time
+                </label>
+                <Input
+                  type="text"
+                  name="helicopterTime"
+                  placeholder="Hours"
+                  className="border rounded-md p-2 outline-red-500/80"
+                />
+              </div>
+
+              <div className="flex flex-col">
+                <label htmlFor="instructorTime" className="text-xs font-medium">
+                  Instructor time
+                </label>
+                <Input
+                  type="text"
+                  name="instructorTime"
+                  placeholder="Hours"
+                  className="border rounded-md p-2 outline-red-500/80"
+                />
+              </div>
+            </div>
           </div>
 
           <div className="flex flex-col">
@@ -335,6 +465,7 @@ const PilotForm = () => {
                   name="jobTypes"
                   value="permanent"
                   className="cursor-pointer w-4 h-4"
+                  disabled={status.pending}
                 />
                 <label htmlFor="permanent" className="text-sm">
                   Permanent
@@ -346,6 +477,7 @@ const PilotForm = () => {
                   name="jobTypes"
                   value="freelance/contract"
                   className="cursor-pointer w-4 h-4"
+                  disabled={status.pending}
                 />
                 <label htmlFor="freelance/contract" className="text-sm">
                   Contract/freelance

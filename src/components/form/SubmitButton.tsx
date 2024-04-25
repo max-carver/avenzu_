@@ -11,7 +11,7 @@ export const SubmitButton = ({ className }: SubmitButtonProps) => {
   const status = useFormStatus();
   return (
     <button type="submit" className={className} disabled={status.pending}>
-      {status.pending ? "loading" : "Submit"}
+      {status.pending ? "Loading...please be patient" : "Submit"}
     </button>
   );
 };
