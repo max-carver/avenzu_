@@ -100,8 +100,6 @@ export default function Home() {
               src="/gulfstream-interior.jpg"
               alt="Gulfstream interior"
               fill={true}
-              objectFit="cover"
-              objectPosition="center"
               className="rounded-2xl"
             />
           </div>

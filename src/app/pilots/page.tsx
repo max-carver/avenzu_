@@ -37,8 +37,6 @@ const PilotsPage = () => {
             <Image
               src={"/pilot.jpg"}
               fill={true}
-              objectFit="cover"
-              objectPosition="center"
               className="rounded-2xl shadow-xl"
               alt="Pilot"
             />
@@ -46,7 +44,7 @@ const PilotsPage = () => {
         </motion.div>
       </section>
 
-      <section className="min-h-screen flex flex-col items-center justify-start py-12 px-8 md:px-16 lg:px-32 relative h-[56rem] md:h-[58rem]">
+      <section className="min-h-screen flex flex-col items-center justify-start py-12 px-8 md:px-16 lg:px-32 relative h-[58rem] md:h-[62rem]">
         <h2 className="text-3xl font-medium mb-6 text-center">Apply now</h2>
         <PilotForm />
       </section>

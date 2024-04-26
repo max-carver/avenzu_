@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useFormStatus } from "react-dom";
+import Spinner from "../Spinner";
 
 type SubmitButtonProps = {
   className: string;
@@ -13,11 +14,11 @@ export const SubmitButton = ({ className, onClick }: SubmitButtonProps) => {
   return (
     <button
       type="submit"
-      className={className}
+      className={`${className} flex items-center justify-center text-center`}
       disabled={status.pending}
       onClick={onClick}
     >
-      {status.pending ? "Loading...please be patient" : "Submit"}
+      {status.pending ? <Spinner /> : "Submit"}
     </button>
   );
 };

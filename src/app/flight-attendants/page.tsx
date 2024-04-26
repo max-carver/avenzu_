@@ -21,13 +21,13 @@ const FlightAttendantsPage = () => {
             delay: 0.3,
             stiffness: 100,
           }}
-          className="flex items-center md:flex-row flex-col justify-between gap-12 w-full text-center md:text-start -mt-24"
+          className="flex items-center md:flex-row flex-col justify-between gap-12 md:gap-8 w-full text-center md:text-start -mt-24"
         >
           <div className="flex flex-col gap-8 w-full md:w-1/2">
             <h2 className="text-2xl font-semibold mt-6 md:m-0">
               Unparalleled Guidance and Mentorship
             </h2>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 w-full">
               <p className="text-md">
                 Avenzu is incomparable when it comes to the aviation industry,
                 what sets us apart is our focus on matching our exceptional crew
@@ -42,14 +42,12 @@ const FlightAttendantsPage = () => {
               </p>
             </div>
           </div>
-          <div className="w-full md:w-1/2 h-[400px] md:h-[500px] relative">
+          <div className="w-3/4 md:w-1/2 lg:w-1/3 h-[400px] md:h-[500px] relative">
             <Image
               src={"/attendant2.jpg"}
               fill={true}
-              objectFit="cover"
-              objectPosition="center"
               className="rounded-2xl shadow-xl"
-              alt="Flight"
+              alt="Flight attendant"
             />
           </div>
         </motion.div>
@@ -76,10 +74,8 @@ const FlightAttendantsPage = () => {
             <Image
               src={"/attendant.jpg"}
               fill={true}
-              objectFit="cover"
-              objectPosition="center"
               className="rounded-2xl shadow-xl"
-              alt="Pilot"
+              alt="Mentoring flight attendant"
             />
           </div>
         </motion.div>
