@@ -23,7 +23,7 @@ export const flightAttendantSubmit = async (formData: FormData) => {
     licenses: Array.from(formData.getAll("licenses") || []),
     aircrafts: Array.from(formData.getAll("aircrafts") || []),
     vipExperience: formData.get("vipExperience"),
-    jobTypes: Array.from(formData.getAll("aircrafts") || []),
+    jobTypes: Array.from(formData.getAll("jobTypes") || []),
     visas: formData.get("visas"),
     photoUpload: formData.get("photoUpload") as File,
     cvUpload: formData.get("cvUpload") as File,

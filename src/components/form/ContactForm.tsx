@@ -83,6 +83,7 @@ const ContactForm = () => {
       <FormSuccess message={success} />
 
       <SubmitButton
+        onClick={() => {}}
         className={clsx(
           "bg-red-500 text-zinc-50 hover:brightness-125 transition duration-200 rounded-lg p-2",
           success && "hidden"

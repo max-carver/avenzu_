@@ -25,7 +25,7 @@ const FlightAttendantsPage = () => {
         >
           <div className="flex flex-col gap-8 w-full md:w-1/2">
             <h2 className="text-2xl font-semibold mt-6 md:m-0">
-              Unparalleled Guidance and Mentorship
+              Unparalleled guidance and mentorship
             </h2>
             <div className="flex flex-col gap-2 w-full">
               <p className="text-md">

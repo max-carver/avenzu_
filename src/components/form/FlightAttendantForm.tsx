@@ -8,7 +8,6 @@ import { GenderSelectMenu, Input } from "@/components/form/Input";
 import SubmitButton from "./SubmitButton";
 import { UploadIcon } from "@radix-ui/react-icons";
 import { useFormStatus } from "react-dom";
-import { redirect } from "next/navigation";
 import { flightAttendantSubmit } from "@/actions/flightAttendantSubmission";
 const FlightAttendantForm = () => {
   const ref = useRef<HTMLFormElement>(null);
