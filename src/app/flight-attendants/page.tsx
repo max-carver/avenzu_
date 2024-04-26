@@ -8,7 +8,7 @@ import FlightAttendantForm from "@/components/form/FlightAttendantForm";
 const FlightAttendantsPage = () => {
   return (
     <main>
-      <section className="min-h-screen flex flex-col items-center justify-start gap-24 py-12 px-8 md:px-16 lg:px-32 bg-zinc-900 text-zinc-50">
+      <section className="min-h-screen flex flex-col items-center justify-start gap-12 md:gap-24 py-12 px-8 md:px-16 lg:px-32 bg-zinc-900 text-zinc-50">
         <h1 className="mb-12 text-4xl font-semibold text-center">
           Flight attendants
         </h1>
@@ -24,7 +24,7 @@ const FlightAttendantsPage = () => {
           className="flex items-center md:flex-row flex-col justify-between gap-12 w-full text-center md:text-start -mt-24"
         >
           <div className="flex flex-col gap-8 w-full md:w-1/2">
-            <h2 className="text-2xl font-semibold">
+            <h2 className="text-2xl font-semibold mt-6 md:m-0">
               Unparalleled Guidance and Mentorship
             </h2>
             <div className="flex flex-col gap-2">
@@ -42,14 +42,14 @@ const FlightAttendantsPage = () => {
               </p>
             </div>
           </div>
-          <div className="w-full md:w-1/2 h-[450px] relative">
+          <div className="w-full md:w-1/2 h-[400px] md:h-[500px] relative">
             <Image
               src={"/attendant2.jpg"}
               fill={true}
               objectFit="cover"
               objectPosition="center"
               className="rounded-2xl shadow-xl"
-              alt="Pilot"
+              alt="Flight"
             />
           </div>
         </motion.div>
@@ -85,7 +85,7 @@ const FlightAttendantsPage = () => {
         </motion.div>
       </section>
 
-      <section className="min-h-screen flex flex-col items-center justify-start py-12 px-8 md:px-16 lg:px-32 relative h-[40rem] md:h-[48rem]">
+      <section className="min-h-screen flex flex-col items-center justify-start py-12 px-8 md:px-16 lg:px-32 relative h-[64rem] md:h-[48rem]">
         <h2 className="text-3xl font-medium mb-6 text-center">Apply now</h2>
         <FlightAttendantForm />
       </section>

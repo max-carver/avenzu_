@@ -9,7 +9,6 @@ import SubmitButton from "./SubmitButton";
 import { UploadIcon } from "@radix-ui/react-icons";
 import { pilotSubmit } from "@/actions/pilotSubmission";
 import { useFormStatus } from "react-dom";
-import { redirect } from "next/navigation";
 const PilotForm = () => {
   const ref = useRef<HTMLFormElement>(null);
   const [error, setError] = useState<string>("");
@@ -43,7 +42,7 @@ const PilotForm = () => {
         if (success) {
           setSuccess(success);
           ref.current?.reset();
-          redirect("/pilots/success/#success");
+          // redirect("/pilots/success/#success");
         }
       }}
       className="flex flex-col space-y-5 bg-zinc-100 p-5 w-full lg:w-2/3 rounded-xl shadow-xl border"
@@ -520,13 +519,13 @@ const PilotForm = () => {
               />
               <p>{selectedPhotoName && selectedPhotoName}</p>
               <p>{selectedPhotoName && "Replace"}</p>
+              <sub className="text-zinc-400 my-2">Maximum image size: 10MB</sub>
             </div>
 
             <div className="flex flex-col items-center justify-center outline-1 outline-dashed outline-zinc-400 relative p-2 rounded-md w-full cursor-pointer">
               <label htmlFor="cvUpload" className="text-xs font-medium">
                 CV upload
               </label>
-
               <UploadIcon
                 className={clsx("w-5 h-5", selectedCVName && "hidden")}
               />
@@ -538,6 +537,7 @@ const PilotForm = () => {
               />
               <p>{selectedCVName && selectedCVName}</p>
               <p>{selectedCVName && "Replace"}</p>
+              <sub className="text-zinc-400 my-2">Maximum file size: 40MB</sub>
             </div>
           </div>
         </>
@@ -547,6 +547,10 @@ const PilotForm = () => {
       <FormSuccess message={success} />
 
       <SubmitButton
+        onClick={() => {
+          setError("");
+          setSuccess("");
+        }}
         className={clsx(
           "bg-red-500 text-zinc-50 hover:brightness-125 transition duration-200 rounded-lg p-2",
           success && "hidden"

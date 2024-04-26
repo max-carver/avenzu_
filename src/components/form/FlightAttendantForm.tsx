@@ -44,7 +44,6 @@ const FlightAttendantForm = () => {
         if (success) {
           setSuccess(success);
           ref.current?.reset();
-          redirect("/pilots/success/#success");
         }
       }}
       className="flex flex-col space-y-5 bg-zinc-100 p-5 w-full lg:w-2/3 rounded-xl shadow-xl border"
@@ -392,7 +391,7 @@ const FlightAttendantForm = () => {
           </div>
 
           <div className="flex flex-col md:flex-row items-center justify-between gap-2">
-            <div className="flex flex-col items-center justify-center outline-1 outline-dashed outline-zinc-400 relative p-2 rounded-md w-full cursor-pointer">
+            <div className="flex flex-col items-center justify-center outline-1 outline-dashed outline-zinc-400 relative p-2 rounded-md w-full ">
               <label htmlFor="photoUpload" className="text-xs font-medium">
                 Photo upload
               </label>
@@ -408,9 +407,10 @@ const FlightAttendantForm = () => {
               />
               <p>{selectedPhotoName && selectedPhotoName}</p>
               <p>{selectedPhotoName && "Replace"}</p>
+              <sub className="text-zinc-400 my-2">Maximum image size: 10MB</sub>
             </div>
 
-            <div className="flex flex-col items-center justify-center outline-1 outline-dashed outline-zinc-400 relative p-2 rounded-md w-full cursor-pointer">
+            <div className="flex flex-col items-center justify-center outline-1 outline-dashed outline-zinc-400 relative p-2 rounded-md w-full ">
               <label htmlFor="cvUpload" className="text-xs font-medium">
                 CV upload
               </label>
@@ -426,6 +426,7 @@ const FlightAttendantForm = () => {
               />
               <p>{selectedCVName && selectedCVName}</p>
               <p>{selectedCVName && "Replace"}</p>
+              <sub className="text-zinc-400 my-2">Maximum file size: 40MB</sub>
             </div>
           </div>
         </>
@@ -435,6 +436,10 @@ const FlightAttendantForm = () => {
       <FormSuccess message={success} />
 
       <SubmitButton
+        onClick={() => {
+          setError("");
+          setSuccess("");
+        }}
         className={clsx(
           "bg-red-500 text-zinc-50 hover:brightness-125 transition duration-200 rounded-lg p-2",
           success && "hidden"

@@ -65,6 +65,14 @@ export const pilotSubmit = async (formData: FormData) => {
       cvUpload,
     } = data;
 
+    if (photoUpload.size > 10485760) {
+      return { error: "Image too large" };
+    } else if (!photoUpload.type.includes("image")) {
+      return {
+        error: "Invalid image format. Only .jpg, .png, and .webp accepted",
+      };
+    }
+
     const photoArrayBuffer = await photoUpload.arrayBuffer();
     const photoBuffer = new Uint8Array(photoArrayBuffer);
     const cvArrayBuffer = await cvUpload.arrayBuffer();
