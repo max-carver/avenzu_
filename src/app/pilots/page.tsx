@@ -21,7 +21,7 @@ const PilotsPage = () => {
           className="flex items-center md:flex-row flex-col justify-between gap-12 w-full text-center md:text-start"
         >
           <div className="flex flex-col gap-4 w-full md:w-1/2">
-            <h2 className="text-2xl font-medium">
+            <h2 className="text-2xl font-semibold">
               Your path to the perfect assignment
             </h2>
             <p className="text-md">

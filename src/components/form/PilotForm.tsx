@@ -50,7 +50,9 @@ const PilotForm = () => {
     >
       {!success && (
         <>
-          <h2 className="text-center text-2xl font-medium">Pilots</h2>
+          <h2 className="text-center text-2xl font-medium">
+            Pilot application
+          </h2>
 
           <div className="flex flex-col">
             <label htmlFor="firstName" className="text-xs font-medium">
@@ -141,7 +143,7 @@ const PilotForm = () => {
               Licenses
             </label>
             <sub className="text-xs italic text-zinc-400 mb-2">
-              Select all that apply
+              Select any that apply
             </sub>
             <div className="flex flex-col md:grid grid-cols-2 gap-1">
               <div className="flex items-center gap-1">
@@ -200,7 +202,7 @@ const PilotForm = () => {
               Aircrafts
             </label>
             <sub className="text-xs italic text-zinc-400 mb-2">
-              Select all that apply
+              Select any that apply
             </sub>
             <div className="flex flex-col md:grid grid-cols-2 gap-1">
               <div className="flex items-center gap-1">
