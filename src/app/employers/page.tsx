@@ -62,7 +62,7 @@ const EmployersPage = () => {
         </motion.div>
       </section>
 
-      <section className="min-h-screen flex flex-col items-center justify-start py-12 px-8 md:px-16 lg:px-32 relative h-[64rem] md:h-[48rem]">
+      <section className="min-h-screen flex flex-col items-center justify-start py-12 px-8 md:px-16 lg:px-32 relative h-[56rem] md:h-[40rem]">
         <EmployerForm />
       </section>
 
