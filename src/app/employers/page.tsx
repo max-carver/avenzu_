@@ -51,7 +51,7 @@ const EmployersPage = () => {
               </button>
             </div>
           </div>
-          <div className="w-3/4 lg:w-1/2 h-[400px] md:h-[500px] relative">
+          <div className="w-full lg:w-1/2 h-[400px] md:h-[500px] relative">
             <Image
               src={"/employers.jpg"}
               fill={true}

@@ -42,7 +42,7 @@ const FlightAttendantsPage = () => {
               </p>
             </div>
           </div>
-          <div className="w-3/4 md:w-1/2 lg:w-1/3 h-[400px] md:h-[500px] relative">
+          <div className="w-3/4 md:w-1/2 lg:w-1/3 h-[300px] md:h-[400px] lg:h-[500px] relative">
             <Image
               src={"/attendant2.jpg"}
               fill={true}
@@ -70,7 +70,7 @@ const FlightAttendantsPage = () => {
               job opportunities.
             </p>
           </div>
-          <div className="w-full md:w-1/2 h-[350px] relative">
+          <div className="w-full md:w-1/2 lg:w-1/3 h-[300px] lg:h-[500px] relative">
             <Image
               src={"/attendant.jpg"}
               fill={true}

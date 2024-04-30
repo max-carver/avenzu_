@@ -9,6 +9,7 @@ import SubmitButton from "./SubmitButton";
 import { UploadIcon } from "@radix-ui/react-icons";
 import { useFormStatus } from "react-dom";
 import { flightAttendantSubmit } from "@/actions/flightAttendantSubmission";
+
 const FlightAttendantForm = () => {
   const ref = useRef<HTMLFormElement>(null);
   const [error, setError] = useState<string>("");
