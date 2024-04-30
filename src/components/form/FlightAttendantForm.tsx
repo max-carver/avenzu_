@@ -383,7 +383,7 @@ const FlightAttendantForm = () => {
         <Input
           type="text"
           name="visas"
-          placeholder="Working, tourist, etc"
+          placeholder="Enter valid visas"
           className="border rounded-md p-2 outline-red-500/80"
         />
       </div>
