@@ -74,3 +74,28 @@ export const jobTypeData = [
     label: "Permanent",
   },
 ] as const;
+
+export type PilotSubmission = {
+  firstName: string;
+  lastName: string;
+  emailAddress: string;
+  phoneNmber: string;
+  age: number;
+  gender: string;
+  nationality: string;
+  country: string;
+  licenses: [];
+  totalTime: number;
+  pic: number;
+  secondInCommand: number;
+  singleEngineLand: number;
+  multiEngineLand: number;
+  jetTime: number;
+  turbineTime: number;
+  helicopterTime: number;
+  instructorTime: number;
+  jobTypes: [];
+  visas: [];
+  photoUrl: string;
+  cvUrl: string;
+};
