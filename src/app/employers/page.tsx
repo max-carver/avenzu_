@@ -47,7 +47,7 @@ const EmployersPage = () => {
                 leaving no detail unattended.
               </p>
               <button className="bg-red-500 text-zinc-50 hover:brightness-125 transition duration-200 rounded-lg p-2 mt-6 w-full lg:w-1/2">
-                <Link href="#">Candidate database</Link>
+                <Link href="/candidates">Candidate database</Link>
               </button>
             </div>
           </div>
