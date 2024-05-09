@@ -5,7 +5,11 @@ import { FormEvent, useState } from "react";
 import { PilotSubmission } from "@/lib/data";
 import { useRouter } from "next/navigation";
 
-const SearchInput = () => {
+interface SearchInputProps {
+  onSearch?: (results: PilotSubmission[]) => void;
+}
+
+const SearchInput = ({ onSearch }: SearchInputProps) => {
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState<string>("");
 
@@ -14,10 +18,12 @@ const SearchInput = () => {
     const response = await getSearch(searchTerm);
     if (typeof response === "string") {
       const data = JSON.parse(response) as PilotSubmission[];
+      if (onSearch) {
+        onSearch(data);
+      }
+      sessionStorage.setItem("searchResults", JSON.stringify(data));
       router.push(
-        `/search?q=${encodeURIComponent(
-          searchTerm
-        )}&results=${encodeURIComponent(JSON.stringify(data))}`
+        `/pilots/candidates/search?q=${encodeURIComponent(searchTerm)}`
       );
     } else {
       console.error("Error fetching data");
@@ -33,7 +39,7 @@ const SearchInput = () => {
         type="text"
         name="search"
         id="search"
-        className="rounded-xl px-2 py-3 text-zinc-900 border outline-none border-transparent focus:border-red-500 w-3/4 rounded-r-none bg-red-500/10"
+        className="rounded-xl px-2 py-3 text-zinc-50 border outline-none border-transparent focus:border-red-500 w-3/4 rounded-r-none bg-red-500/10"
         onChange={(e) => setSearchTerm(e.target.value)}
         value={searchTerm}
         placeholder="Search..."
