@@ -27,6 +27,16 @@ const SearchResultsPage = () => {
       <h1>Search Results for "{searchQuery}"</h1>
       {searchResults.length > 0 ? (
         <div className="bg-zinc-50 p-6 rounded-md shadow-xl overflow-scroll overflow-x-hidden h-screen w-full flex flex-col gap-y-4">
+          {searchResults.length === 1 ? (
+            <p className="text-sm italic text-zinc-900">
+              {searchResults.length} result
+            </p>
+          ) : (
+            <p className="text-sm italic text-zinc-900">
+              {searchResults.length} results
+            </p>
+          )}
+
           {searchResults.map((pilot: PilotSubmission, index: number) => (
             <div
               key={index}
