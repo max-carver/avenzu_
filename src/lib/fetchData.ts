@@ -13,13 +13,13 @@ export const getPilots = async () => {
   }
 };
 
-// export const getFlightAttendants = async () => {
-//   try {
-//     connectToDB();
-//     const flightAttendants = await FlightAttendantSubmissionModel.find();
-//     return flightAttendants;
-//   } catch (err: any) {
-//     console.log(err);
-//     throw new Error(err.message);
-//   }
-// };
+export const getFlightAttendants = async () => {
+  try {
+    connectToDB();
+    const flightAttendants = await FlightAttendantSubmissionModel.find();
+    return flightAttendants;
+  } catch (err: any) {
+    console.log(err);
+    throw new Error(err.message);
+  }
+};

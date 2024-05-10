@@ -1,29 +1,31 @@
 "use client";
 
-import getSearch from "@/actions/search";
+import getFlightAttendantsSearch from "@/actions/flightAttendantsSearch";
 import { FormEvent, useState } from "react";
-import { PilotSubmission } from "@/lib/data";
+import { FlightAttendantSubmission } from "@/lib/data";
 import { useRouter } from "next/navigation";
 
 interface SearchInputProps {
-  onSearch?: (results: PilotSubmission[]) => void;
+  onSearch?: (results: FlightAttendantSubmission[]) => void;
 }
 
-const SearchInput = ({ onSearch }: SearchInputProps) => {
+const FlightAttendantsSearchInput = ({ onSearch }: SearchInputProps) => {
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState<string>("");
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    const response = await getSearch(searchTerm);
+    const response = await getFlightAttendantsSearch(searchTerm);
     if (typeof response === "string") {
-      const data = JSON.parse(response) as PilotSubmission[];
+      const data = JSON.parse(response) as FlightAttendantSubmission[];
       if (onSearch) {
         onSearch(data);
       }
       sessionStorage.setItem("searchResults", JSON.stringify(data));
       router.push(
-        `/pilots/candidates/search?q=${encodeURIComponent(searchTerm)}`
+        `/flight-attendants/candidates/search?q=${encodeURIComponent(
+          searchTerm
+        )}`
       );
     } else {
       console.error("Error fetching data");
@@ -54,4 +56,4 @@ const SearchInput = ({ onSearch }: SearchInputProps) => {
   );
 };
 
-export default SearchInput;
+export default FlightAttendantsSearchInput;

@@ -85,6 +85,7 @@ export type PilotSubmission = {
   nationality: string;
   country: string;
   licenses: [];
+  aircrafts: [];
   totalTime: number;
   pic: number;
   secondInCommand: number;
@@ -94,6 +95,24 @@ export type PilotSubmission = {
   turbineTime: number;
   helicopterTime: number;
   instructorTime: number;
+  jobTypes: [];
+  visas: [];
+  photoUrl: string;
+  cvUrl: string;
+};
+
+export type FlightAttendantSubmission = {
+  firstName: string;
+  lastName: string;
+  emailAddress: string;
+  phoneNmber: string;
+  age: number;
+  gender: string;
+  nationality: string;
+  country: string;
+  licenses: [];
+  vipExperience: number;
+  aircrafts: [];
   jobTypes: [];
   visas: [];
   photoUrl: string;

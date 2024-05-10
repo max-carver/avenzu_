@@ -1,18 +1,21 @@
 "use server";
 
 import { connectToDB } from "@/lib/db";
-import { PilotSubmissionModel } from "@/models/pilotSubmissionModel";
+import { FlightAttendantSubmissionModel } from "@/models/flightAttendantSubmissionModel";
 
-const getSearch = async (searchTerm: string) => {
+const getFlightAttendantsSearch = async (searchTerm: string) => {
   connectToDB();
-  const searchResults = await PilotSubmissionModel.aggregate([
+  const searchResults = await FlightAttendantSubmissionModel.aggregate([
     {
       $search: {
-        index: "searchPilots",
+        index: "flightAttendantsSearch",
         text: {
           query: searchTerm,
           path: {
             wildcard: "*",
+          },
+          fuzzy: {
+            maxEdits: 2,
           },
         },
       },
@@ -30,15 +33,8 @@ const getSearch = async (searchTerm: string) => {
       nationality,
       country,
       licenses,
-      totalTime,
-      pic,
-      secondInCommand,
-      singleEngineLand,
-      multiEngineLand,
-      jetTime,
-      turbineTime,
-      helicopterTime,
-      instructorTime,
+      aircrafts,
+      vipExperience,
       jobTypes,
       visas,
       photoUrl,
@@ -55,15 +51,8 @@ const getSearch = async (searchTerm: string) => {
       nationality,
       country,
       licenses,
-      totalTime,
-      pic,
-      secondInCommand,
-      singleEngineLand,
-      multiEngineLand,
-      jetTime,
-      turbineTime,
-      helicopterTime,
-      instructorTime,
+      aircrafts,
+      vipExperience,
       jobTypes,
       visas,
       photoUrl,
@@ -73,4 +62,4 @@ const getSearch = async (searchTerm: string) => {
   return JSON.stringify(plainSearchResults);
 };
 
-export default getSearch;
+export default getFlightAttendantsSearch;
